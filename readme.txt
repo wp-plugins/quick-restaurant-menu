@@ -26,7 +26,7 @@ The plugin uses default WordPress functionality. Creates two new post types, Men
 
 = Demo =
 
-[Example Menu][http://thingsforrestaurants.com]
+[Example Menu](http://thingsforrestaurants.com)
 
 = How to use =
 

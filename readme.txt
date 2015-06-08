@@ -107,7 +107,8 @@ You can use the support tab here, or visit the [plugin website](http://thingsfor
 2. List of Menu Items inside Menu
 3. Edit Menu Item inside Menu
 4. List of Menu Items from admin sidebar
-5. Variable menu interface
+5. Lightbox
+6. Variable menu interface
 
 == Changelog ==
 

@@ -13,21 +13,27 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Determines if is ERM admin Menu page
+ * Determines if is editing post_type erm_menu
  *
  * @since 1.0
- * @return bool True is is admin Menu post type page
+ * @return bool
  */
-function erm_is_admin_menu_page_post_type() {
+function erm_is_admin_editing_erm_menu() {
     global $pagenow, $typenow;
+    $ret = ( 'erm_menu' == $typenow && ( 'post.php' ==  $pagenow || 'post-new.php' == $pagenow ) );
+    return (bool) apply_filters( 'erm_is_admin_editing_erm_menu', $ret );
+}
 
-    $ret = false;
-
-    if ( 'erm_menu' == $typenow && ( 'post.php' ==  $pagenow || 'post-new.php' == $pagenow ) ) {
-        $ret = true;
-    }
-
-    return (bool) apply_filters( 'erm_is_admin_menu_page', $ret );
+/**
+ * Determines if is editing post_type erm_menu_week
+ *
+ * @since 1.0
+ * @return bool
+ */
+function erm_is_admin_editing_erm_menu_week() {
+    global $pagenow, $typenow;
+    $ret = ( 'erm_menu_week' == $typenow && ( 'post.php' ==  $pagenow || 'post-new.php' == $pagenow ) );
+    return (bool) apply_filters( 'erm_is_admin_editing_erm_menu_week', $ret );
 }
 
 
@@ -112,6 +118,64 @@ function erm_get_menu_item_data( $id ) {
     }
 
     return array();
+}
+
+/**
+ * Get list of menus
+ *
+ * @since 1.1
+ * @return mixed|void
+ */
+function erm_get_list_menus() {
+    $posts = get_posts(array(
+       'post_type' => 'erm_menu',
+        'posts_per_page' => -1
+    ));
+    $result = array();
+    foreach( $posts as $post ) {
+        $result[] = array(
+            'id' => $post->ID,
+            'title' => $post->post_title
+        );
+    }
+    return apply_filters( 'erm_get_list_menus', $result );
+}
+
+/**
+ * Get week days ordered from wp
+ *
+ * @since 1.1
+ * @return mixed|void
+ */
+function erm_get_week_days_ordered() {
+    $start_day = intval( get_option('start_of_week') );
+    $days = array(
+        __('Sunday','erm'),
+        __('Monday','erm'),
+        __('Tuesday','erm'),
+        __('Wednesday','erm'),
+        __('Thursday','erm'),
+        __('Friday','erm'),
+        __('Saturday','erm'),
+    );
+    if ($start_day>0) {
+        for ($i=1;$i<=$start_day;$i++){
+            array_push($days,array_shift($days));
+        }
+    }
+    return apply_filters('erm_get_week_days_ordered',$days);
+}
+
+function erm_get_week_days_english() {
+    return array(
+        __('Sunday','erm'),
+        __('Monday','erm'),
+        __('Tuesday','erm'),
+        __('Wednesday','erm'),
+        __('Thursday','erm'),
+        __('Friday','erm'),
+        __('Saturday','erm'),
+    );
 }
 
 

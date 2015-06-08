@@ -68,7 +68,7 @@ function erm_setup_post_types() {
         'not_found' 		=> __( 'No Menu Item found', 'erm' ),
         'not_found_in_trash'=> __( 'No Menu Items found in Trash', 'erm' ),
         'parent_item_colon' => '',
-        'menu_name' 		=> __( 'Rest. Menu items', 'erm' )
+        'menu_name' 		=> __( 'Rest. Menu Items', 'erm' )
     ));
 
     $args_menu_item = array(
@@ -88,5 +88,41 @@ function erm_setup_post_types() {
     }
 
     register_post_type('erm_menu_item', apply_filters( 'erm_menu_item_post_type_args', $args_menu_item ) );
+
+    // Post type menu_week
+    $labels_menu_week = apply_filters( 'erm_menu_week_labels', array(
+        'name' 				=> __( 'Weekly Menus', 'post type general name', 'erm' ),
+        'singular_name' 	=> __( 'Weekly Menu', 'post type singular name', 'erm' ),
+        'add_new' 			=> __( 'Add New', 'erm' ),
+        'add_new_item' 		=> __( 'Add New Weekly Menu', 'erm' ),
+        'edit_item' 		=> __( 'Edit Weekly Menu', 'erm' ),
+        'new_item' 			=> __( 'New Weekly Menu', 'erm' ),
+        'all_items' 		=> __( 'All Weekly Menus', 'erm' ),
+        'view_item' 		=> __( 'View Weekly Menu', 'erm' ),
+        'search_items' 		=> __( 'Search Weekly Menus', 'erm' ),
+        'not_found' 		=> __( 'No Weekly Menu found', 'erm' ),
+        'not_found_in_trash'=> __( 'No Weekly Menus found in Trash', 'erm' ),
+        'parent_item_colon' => '',
+        'menu_name' 		=> __( 'Rest. Menus Week', 'erm' )
+    ));
+
+    $args_menu_week = array(
+        'labels'            => $labels_menu_week,
+        'public'            => true,
+        'publicly_queryable'=> false,
+        'query_var' 		=> false,
+        'rewrite' 			=> false,
+        'map_meta_cap'      => true, // true to edit/delete
+        'has_archive' 		=> false,
+        'hierarchical' 		=> false,
+        'supports'          => apply_filters( 'erm_menu_week_supports', array( 'title' ) )
+    );
+    if( version_compare( $wp_version, '3.8-RC', '>=' ) || version_compare( $wp_version, '3.8', '>=' ) ) {
+        $args_menu_week['menu_icon'] = 'dashicons-exerpt-view';
+    }
+
+    register_post_type('erm_menu_week', apply_filters( 'erm_menu_week_post_type_args', $args_menu_week ) );
+
+
 }
 add_action( 'init', 'erm_setup_post_types', 1 );

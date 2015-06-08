@@ -10,6 +10,9 @@
 
 /**
  * Load Scripts front End
+ *
+ * @since 1.0
+ * @updated 1.1
  */
 function erm_load_scripts() {
 
@@ -20,7 +23,7 @@ function erm_load_scripts() {
     $js_dir  = ERM_PLUGIN_URL . 'assets/js/';
     $css_dir = ERM_PLUGIN_URL . 'assets/css/';
 
-    if ( has_shortcode( $post->post_content, 'erm_menu') ) {
+    if ( has_shortcode( $post->post_content, 'erm_menu') || has_shortcode( $post->post_content, 'erm_menu_week') ) {
 
         wp_enqueue_style( 'font-oswald', 'http://fonts.googleapis.com/css?family=Oswald:400,700' );
         wp_enqueue_style( 'magnific-popup', $css_dir.'magnific-popup.css' );

@@ -4,8 +4,8 @@
  * Plugin URI: http://thingsforrestaurants.com
  * Description: Create Restaurants Menus
  * Author: Alejandro Pascual
- * Author URI: http://aleplugins.com
- * Version: 1.00
+ * Author URI: http://thingsforrestaurants.com
+ * Version: 1.1
  * Text Domain: erm
  * Domain Path: languages
  *

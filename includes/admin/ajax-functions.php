@@ -114,7 +114,11 @@ function erm_update_list_menu_items() {
 }
 add_action( 'wp_ajax_erm_update_list_menu_items', 'erm_update_list_menu_items' );
 
-
+/**
+ * Get list of menu items ajax
+ *
+ * @since 1.0
+ */
 function erm_list_menu_items() {
 
     $posts = get_posts( array(
@@ -144,3 +148,20 @@ function erm_list_menu_items() {
 }
 add_action( 'wp_ajax_erm_list_menu_items', 'erm_list_menu_items' );
 
+
+/**
+ * Save menu week
+ *
+ * @since 1.1
+ */
+function erm_update_menu_week() {
+
+    $post_id = $_POST['post_id'];
+    $franjas = $_POST['franjas'];
+    //echo '<pre>'; print_r( $franjas ); echo '</pre>';
+    update_post_meta( $post_id, 'erm_week_rules', $franjas );
+
+
+    wp_send_json_success();
+}
+add_action( 'wp_ajax_erm_update_menu_week', 'erm_update_menu_week' );

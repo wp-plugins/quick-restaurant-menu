@@ -5,14 +5,16 @@ Plugin URL: http://thingsforrestaurants.com
 Requires at Least: 3.5
 Tested Up To: 4.2
 Tags: menu, restaurant, restaurant menu, food, drink, dining, cafe, coffee, cuisine
-Stable tag: 1.0.0
+Stable tag: 1.1
 License: GPLv2 or later
 
-Create restaurant menu for bars, cafes and eateries. Drag and drop UI. Includes images, descriptions, sizes and prices.
+Create easily restaurant menus with drag and drop. Display different menus for each day of the week and for different hours in the same day.
 
 == Description ==
 
-Quick Restaurant Menu allows you to create quickly menus for eateries, cafes, bars and restaurants.
+Quick Restaurant Menu allows you to create quickly menus for eateries, cafes, bars and restaurants. You can include images, descriptions, sizes and images.
+
+Display **different menus for each day of the week** and also **for different hours in the same day**. Suppose for example you want to display a menu for lunch and another one for diner, then depending on the hour the visitor access your website it will show a different menu.
 
 The plugin uses default WordPress functionality. Creates two new post types, Menus and Menu Items, which are used to construct the menu. You can create and edit menu items inside the menu post interface, rearrange them with drag and drop, and group them into sections. Then use a shortcode to display it in posts and pages.
 
@@ -21,6 +23,7 @@ The plugin uses default WordPress functionality. Creates two new post types, Men
 * Add header and footer to each menu
 * Menu items with picture, description, sizes and prices
 * Responsive menu layout for mobile viewing
+* Variable menu depending on the week day and the hour
 * Drag and drop interface
 * Insert custom CSS
 
@@ -33,6 +36,10 @@ The plugin uses default WordPress functionality. Creates two new post types, Men
 Add the shortcode of the menu in any existing post or page:
 
 `[erm_menu id=123]`
+
+Define a variable menu combining different menus. Insert the shortcode in the page:
+
+`[erm_menu_week id=123]`
 
 == Installation ==
 
@@ -60,6 +67,20 @@ To display your menu in a simple list, use the shortcode with the id of the menu
 
 `[erm_menu id=123]`
 
+= How do I create a variable menu? =
+
+Click on **Rest. Menus Week** in your WordPress admin sidebar. Click on **Add New** to create your first entry and save the post.
+
+Add different schedules and assign a menu to each one.
+
+Reorder the schedules with drag and drop.
+
+Insert the shortcode in some page/post.
+
+The page will display the menu that satisfies the first schedule rule. If no rule is satisfied then no menu will be displayed.
+
+You can create rules for different days and for different hours.
+
 = How do I manage currency character? =
 
 You don't need to insert the currency on each price. Just go to **Rest. Menus -> Settings**, insert your currency and in with position you want it to display: before or after the price.
@@ -82,16 +103,21 @@ You can use the support tab here, or visit the [plugin website](http://thingsfor
 
 == Screenshots ==
 
-1. Menu displayed with different screen width
+1. Menu Front end. Different device width.
 2. List of Menu Items inside Menu
 3. Edit Menu Item inside Menu
 4. List of Menu Items from admin sidebar
+5. Lightbox
+6. Variable menu interface
 
 == Changelog ==
+
+= 1.1 =
+* Added variable menus.
 
 = 1.0 =
 * Plugin released.
 
 == Upgrade Notice ==
 
-Version 1.0 released
+Added variable menus

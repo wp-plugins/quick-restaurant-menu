@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * Enqueue admin scripts
  *
  * @since 1.0
+ * @updated 1.1
  * @param string $hook Page hook
  * @return void
  */
@@ -28,8 +29,8 @@ function erm_load_admin_scripts( $hook ) {
     // Use minified libraries if SCRIPT_DEBUG is turned off
     $suffix  = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-    // Only for Menu admin page
-    if ( apply_filters( 'erm_load_admin_menu_page_scripts', erm_is_admin_menu_page_post_type(), $hook ) ) {
+    // Only for post type erm_menu
+    if ( apply_filters( 'erm_load_admin_editing_erm_menu', erm_is_admin_editing_erm_menu(), $hook ) ) {
 
         // Fontawesome
         wp_enqueue_style( 'fontawesome', $css_dir.'font-awesome'.$suffix.'.css', array(), '4.3.0' );
@@ -60,7 +61,7 @@ function erm_load_admin_scripts( $hook ) {
         wp_enqueue_script( 'magnific-popup', $js_dir . 'jquery.magnific-popup.min.js', array( 'jquery' ), '1.0.0', true );
 
         // ERM script
-        wp_enqueue_script( 'erm-admin-scripts', $js_dir.'erm-admin-scripts.js', array('jquery','knockout', 'knockout-sortable'), ERM_VERSION, true );
+        wp_enqueue_script( 'erm-admin-scripts', $js_dir.'erm-admin-erm_menu.js', array('jquery','knockout', 'knockout-sortable'), ERM_VERSION, true );
 
         // Menu items
         global $post_id;
@@ -76,8 +77,67 @@ function erm_load_admin_scripts( $hook ) {
             )
         ) );
 
-    } else if ( $pagenow == 'edit.php' && ( $typenow == 'erm_menu_item' || $typenow == 'erm_menu' ) ) {
+    }
+
+    //Columns erm_menu, erm_menu_item
+    else if ( $pagenow == 'edit.php' && ( $typenow == 'erm_menu_item' || $typenow == 'erm_menu' || $typenow == 'erm_menu_week' ) ) {
         wp_enqueue_style( 'erm-admin-cols-style', $css_dir.'erm-admin-cols-style.css', array(), ERM_VERSION );
+    }
+
+    // Post type erm_menu_week
+    else if ( apply_filters( 'erm_load_admin_editing_erm_menu_week', erm_is_admin_editing_erm_menu_week(), $hook ) ) {
+
+        // Fontawesome
+        wp_enqueue_style( 'fontawesome', $css_dir.'font-awesome'.$suffix.'.css', array(), '4.3.0' );
+
+        // ion.rangeSlider
+        wp_enqueue_style( 'ion.rangeSlider', $css_dir.'ion.rangeSlider.css', array(), '2.0.6' );
+        wp_enqueue_style( 'ion.rangeSlider.skin', $css_dir.'ion.rangeSlider.skinHTML5.css', array(), '2.0.6' );
+
+        // Knockout
+        wp_enqueue_script( 'knockout', $js_dir.'knockout.min.js', array(), '3.3.0', true );
+        wp_enqueue_script( 'knockout-sortable', $js_dir.'knockout-sortable'.$suffix.'.js', array(), '0.11.0', true );
+
+        // ion rangeSlider
+        wp_enqueue_script( 'ion-rangeslider', $js_dir.'ion.rangeSlider'.$suffix.'.js', array(), '2.0.6', true );
+
+        // ERM script
+        wp_enqueue_script( 'erm-admin-scripts', $js_dir.'erm-admin-erm_menu_week.js', array('jquery','knockout', 'knockout-sortable', 'ion-rangeslider'), ERM_VERSION, true );
+
+        // Data
+        global $post_id;
+
+        // Add void menu to the start of list menus
+        add_filter('erm_get_list_menus',function($list){
+           return array_merge(array(
+               array('id'=>0,'title'=>'No Menu selected')),
+               $list);
+        });
+        // Menu rules by default
+        add_filter('erm_get_menu_week_rules',function($franjas){
+            if (empty($franjas)) {
+                $franjas = array(
+                    array(
+                        'week' => array(true,true,true,true,true,true,true),
+                        'begin' => '00:00',
+                        'end' => '24:00',
+                        'menu_id' => 0
+                    )
+                );
+            }
+            return $franjas;
+        },10,2);
+
+
+        wp_localize_script( 'erm-admin-scripts', 'erm_vars', array(
+            'post_id' => $post_id,
+            'menus' => erm_get_list_menus(),
+            'franjas' => apply_filters( 'erm_get_menu_week_rules' , get_post_meta($post_id,'erm_week_rules',true) ),
+            'start_of_week' => get_option('start_of_week'),
+            //'week_days' => erm_get_week_days_ordered(),
+            'week_days' => erm_get_week_days_english()
+        ));
+
     }
 
 }

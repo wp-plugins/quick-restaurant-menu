@@ -5,7 +5,7 @@ Plugin URL: http://thingsforrestaurants.com
 Requires at Least: 3.5
 Tested Up To: 4.2
 Tags: menu, restaurant, restaurant menu, food, drink, dining, cafe, coffee, cuisine
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 Create easily restaurant menus with drag and drop. Display different menus for each day of the week and for different hours in the same day.
@@ -40,6 +40,10 @@ Add the shortcode of the menu in any existing post or page:
 Define a variable menu combining different menus. Insert the shortcode in the page:
 
 `[erm_menu_week id=123]`
+
+= Translations =
+
+* Spanish (Español)
 
 == Installation ==
 
@@ -112,6 +116,10 @@ You can use the support tab here, or visit the [plugin website](http://thingsfor
 
 == Changelog ==
 
+= 1.2 =
+* Removed anonymous functions for PHP 5.2
+* Added Spanish translation
+
 = 1.1 =
 * Added variable menus.
 
@@ -120,4 +128,4 @@ You can use the support tab here, or visit the [plugin website](http://thingsfor
 
 == Upgrade Notice ==
 
-Added variable menus
+Added Spanish translation

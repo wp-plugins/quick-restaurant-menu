@@ -107,14 +107,16 @@ function erm_load_admin_scripts( $hook ) {
         // Data
         global $post_id;
 
+        // These anonymus functions need php 5.3
         // Add void menu to the start of list menus
-        add_filter('erm_get_list_menus',function($list){
+        /*add_filter('erm_get_list_menus',function($list){
            return array_merge(array(
                array('id'=>0,'title'=>'No Menu selected')),
                $list);
-        });
+        });*/
+
         // Menu rules by default
-        add_filter('erm_get_menu_week_rules',function($franjas){
+        /*add_filter('erm_get_menu_week_rules',function($franjas){
             if (empty($franjas)) {
                 $franjas = array(
                     array(
@@ -126,7 +128,7 @@ function erm_load_admin_scripts( $hook ) {
                 );
             }
             return $franjas;
-        },10,2);
+        });*/
 
 
         wp_localize_script( 'erm-admin-scripts', 'erm_vars', array(
@@ -142,3 +144,39 @@ function erm_load_admin_scripts( $hook ) {
 
 }
 add_action( 'admin_enqueue_scripts', 'erm_load_admin_scripts', 100 );
+
+/**
+ * Add void menu to the list
+ *
+ * @since 1.2
+ * @param $list
+ * @return array
+ */
+function erm_admin_scripts_filter_list_menus( $list ){
+    return array_merge(array(
+            array('id'=>0,'title'=>__('No Menu selected','erm'))),
+        $list);
+}
+add_filter('erm_get_list_menus','erm_admin_scripts_filter_list_menus');
+
+/**
+ * Default schedules
+ *
+ * @since 1.2
+ * @param $franjas
+ * @return array
+ */
+function erm_admin_scripts_filter_rules( $franjas ){
+    if (empty($franjas)) {
+        $franjas = array(
+            array(
+                'week' => array(true,true,true,true,true,true,true),
+                'begin' => '00:00',
+                'end' => '24:00',
+                'menu_id' => 0
+            )
+        );
+    }
+    return $franjas;
+}
+add_filter('erm_get_menu_week_rules', 'erm_admin_scripts_filter_rules');

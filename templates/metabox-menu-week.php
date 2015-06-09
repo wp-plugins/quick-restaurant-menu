@@ -66,7 +66,7 @@
         <div><?php _e( '- The page/post will show the first menu that satisfied the rule.' , 'erm' ); ?></div>
         <br>
         <div>- <?php _e('UTC time:','erm'); echo ' '.current_time( 'l, d F Y - H:i', 1 ); ?></div>
-        <div>- <?php _e('LOC time:','erm'); echo ' <strong>'.current_time( 'l, d F Y - H:i', 0 ).'</strong>'; ?> ( Use local time to select the time interval. )</div>
+        <div>- <?php _e('LOC time:','erm'); echo ' <strong>'.current_time( 'l, d F Y - H:i', 0 ).'</strong> ' . __('( Use local time to select the time interval. )','erm'); ?></div>
     </div>
 
     <div data-bind="sortable: {data:franjas,options:{axis:'y', handle:'.icon-move'}, afterMove: afterMove}">
@@ -74,7 +74,7 @@
             <i class="icon-move fa fa-bars"></i>
             <div class="semana" data-bind="diasSemana: week, week_days:week_days"></div>
             <div class="horario"><div data-bind="franjaHoraria: horario"></div></div>
-            <div style="margin-top:20px;">SELECT MENU: <select data-bind="options:menus, optionsText:'title', value:menu"></select></div>
+            <div style="margin-top:20px;"><?php _e('SELECT MENU:','erm'); ?> <select data-bind="options:menus, optionsText:'title', value:menu"></select></div>
             <i class="icon-delete fa fa-times" data-bind="click: $parent.removeFranja"></i>
         </div>
     </div>

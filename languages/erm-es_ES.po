@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quick Restaurant Menu\n"
-"POT-Creation-Date: 2015-05-28 13:47+0100\n"
-"PO-Revision-Date: 2015-05-28 13:47+0100\n"
+"POT-Creation-Date: 2015-06-09 10:38+0100\n"
+"PO-Revision-Date: 2015-06-09 10:39+0100\n"
 "Last-Translator: Alejandro <elapsl@elapsl.com>\n"
 "Language-Team: Alejandro <elapsl@elapsl.com>\n"
 "Language: es_ES\n"
@@ -18,9 +18,37 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/ajax-functions.php:138
+#: includes/admin/ajax-functions.php:142
 msgid "Add Menu Items"
 msgstr "Todos los Menú Productos"
+
+#: includes/admin/functions.php:153 includes/admin/functions.php:171
+msgid "Sunday"
+msgstr "Domingo"
+
+#: includes/admin/functions.php:154 includes/admin/functions.php:172
+msgid "Monday"
+msgstr "Lunes"
+
+#: includes/admin/functions.php:155 includes/admin/functions.php:173
+msgid "Tuesday"
+msgstr "Martes"
+
+#: includes/admin/functions.php:156 includes/admin/functions.php:174
+msgid "Wednesday"
+msgstr "Miercoles"
+
+#: includes/admin/functions.php:157 includes/admin/functions.php:175
+msgid "Thursday"
+msgstr "Jueves"
+
+#: includes/admin/functions.php:158 includes/admin/functions.php:176
+msgid "Friday"
+msgstr "Viernes"
+
+#: includes/admin/functions.php:159 includes/admin/functions.php:177
+msgid "Saturday"
+msgstr "Sabado"
 
 #: includes/admin/menu-settings.php:17
 msgid "settings"
@@ -34,58 +62,38 @@ msgstr "Ajustes"
 msgid "General"
 msgstr "General"
 
-#: includes/admin/metabox.php:27 includes/post-types.php:59
+#: includes/admin/metabox.php:28 includes/post-types.php:59
 msgid "Menu Items"
 msgstr "Menú productos"
 
-#: includes/admin/metabox.php:28
+#: includes/admin/metabox.php:29
 msgid "Footer Menu"
 msgstr "Texto debajo del Menú"
 
-#: includes/admin/metabox.php:29 includes/admin/table-columns.php:66
+#: includes/admin/metabox.php:30 includes/admin/metabox.php:38
+#: includes/admin/table-columns.php:67 includes/admin/table-columns.php:104
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: includes/admin/metabox.php:85
-msgid "Select Image"
-msgstr "Seleccionar Imagen"
+#: includes/admin/metabox.php:37
+msgid "Weekly menu rules"
+msgstr "Reglas menú semanal"
 
-#: includes/admin/metabox.php:99
-msgid "Title"
-msgstr "Titulo"
-
-#: includes/admin/metabox.php:100
-msgid "Price"
-msgstr "Precio"
-
-#: includes/admin/metabox.php:104
-msgid "Add price"
-msgstr "Añadir Precio"
-
-#: includes/admin/metabox.php:113 includes/post-types.php:64
-msgid "New Menu Item"
-msgstr "Nuevo Menú Producto"
-
-#: includes/admin/metabox.php:114
-msgid "New Title Section"
-msgstr "Nueva Sección-Título"
-
-#: includes/admin/metabox.php:118
-msgid "Please, SAVE THIS POST to begin adding Menu Items"
-msgstr ""
-"Por favor, GUARDE ESTE POST para empezar a añadir productos a la Carta-Menú."
-
-#: includes/admin/metabox.php:230
+#: includes/admin/metabox.php:164 includes/admin/metabox.php:200
 msgid "Insert this shortcode to display Menu in Front end"
 msgstr "Insertar este shortcode para mostrar la Carta en la Web"
 
-#: includes/admin/scripts.php:74
+#: includes/admin/scripts.php:75
 msgid "Are you sure to delete?"
 msgstr "Estas seguro de borrarlo?"
 
-#: includes/admin/scripts.php:75
+#: includes/admin/scripts.php:76
 msgid "Yes, delete it!"
 msgstr "Si, borrarlo."
+
+#: includes/admin/scripts.php:157
+msgid "No Menu selected"
+msgstr "Menú no seleccionado"
 
 #: includes/admin/settings.php:99
 msgid "Currency"
@@ -140,11 +148,11 @@ msgid "The callback function for setting <strong>%s</strong> is missing."
 msgstr ""
 "La función de retorno para el ajuste <strong>%s</strong> no está programada."
 
-#: includes/admin/table-columns.php:21
+#: includes/admin/table-columns.php:22
 msgid "Image"
 msgstr "Imagen"
 
-#: includes/admin/table-columns.php:39
+#: includes/admin/table-columns.php:41
 msgid "SECTION"
 msgstr "SECCION"
 
@@ -157,6 +165,7 @@ msgid "Menu"
 msgstr "Menú"
 
 #: includes/post-types.php:21 includes/post-types.php:61
+#: includes/post-types.php:96
 msgid "Add New"
 msgstr "Añadir nuevo"
 
@@ -208,6 +217,10 @@ msgstr "Añadir nuevo Menú Producto"
 msgid "Edit Menu Item"
 msgstr "Editar Menú Producto"
 
+#: includes/post-types.php:64 templates/metabox-menu-items.php:57
+msgid "New Menu Item"
+msgstr "Nuevo Menú Producto"
+
 #: includes/post-types.php:65
 msgid "All Menu Items"
 msgstr "Todos los Productos"
@@ -229,8 +242,52 @@ msgid "No Menu Items found in Trash"
 msgstr "No hay productos en la papelera"
 
 #: includes/post-types.php:71
-msgid "Rest. Menu items"
+msgid "Rest. Menu Items"
 msgstr "Rest. Menú Productos"
+
+#: includes/post-types.php:94
+msgid "Weekly Menus"
+msgstr "Menú Semanal"
+
+#: includes/post-types.php:95
+msgid "Weekly Menu"
+msgstr "Menú Semanal"
+
+#: includes/post-types.php:97
+msgid "Add New Weekly Menu"
+msgstr "Añadir nuevo Menú Semanal"
+
+#: includes/post-types.php:98
+msgid "Edit Weekly Menu"
+msgstr "Editar Menú Semanal"
+
+#: includes/post-types.php:99
+msgid "New Weekly Menu"
+msgstr "Nuevo Menú Semanal"
+
+#: includes/post-types.php:100
+msgid "All Weekly Menus"
+msgstr "Todos los menús semanales"
+
+#: includes/post-types.php:101
+msgid "View Weekly Menu"
+msgstr "Ver menú semanal"
+
+#: includes/post-types.php:102
+msgid "Search Weekly Menus"
+msgstr "Buscar Menús semanales"
+
+#: includes/post-types.php:103
+msgid "No Weekly Menu found"
+msgstr "No se ha encontrado menú semanal"
+
+#: includes/post-types.php:104
+msgid "No Weekly Menus found in Trash"
+msgstr "No se han encontrado menús en la papelera"
+
+#: includes/post-types.php:106
+msgid "Rest. Menus Week"
+msgstr "Rest. Menú Semana"
 
 #: quick-restaurant-menu.php:83
 msgid "Clone is not allowed"
@@ -239,3 +296,60 @@ msgstr "Clone is not allowed"
 #: quick-restaurant-menu.php:93
 msgid "Unserializing is not allowed"
 msgstr "Unserializing is not allowed"
+
+#: templates/metabox-menu-items.php:29
+msgid "Select Image"
+msgstr "Seleccionar Imagen"
+
+#: templates/metabox-menu-items.php:43
+msgid "Title"
+msgstr "Titulo"
+
+#: templates/metabox-menu-items.php:44
+msgid "Price"
+msgstr "Precio"
+
+#: templates/metabox-menu-items.php:48
+msgid "Add price"
+msgstr "Añadir Precio"
+
+#: templates/metabox-menu-items.php:58
+msgid "New Title Section"
+msgstr "Nueva Sección-Título"
+
+#: templates/metabox-menu-items.php:62
+msgid "Please, SAVE THIS POST to begin adding Menu Items"
+msgstr ""
+"Por favor, GUARDE ESTE POST para empezar a añadir productos a la Carta-Menú."
+
+#: templates/metabox-menu-week.php:64
+msgid "- Create schedules and assign a menu to each of them."
+msgstr "- Crear horarios y asignarle un menú a cada uno."
+
+#: templates/metabox-menu-week.php:65
+msgid "- Insert the shortcode in any post or page."
+msgstr "- Insertar el shortcode en una página/post"
+
+#: templates/metabox-menu-week.php:66
+msgid "- The page/post will show the first menu that satisfied the rule."
+msgstr "- Aparecerá el menú que cumpla la primera regla."
+
+#: templates/metabox-menu-week.php:68
+msgid "UTC time:"
+msgstr "Hora UTC:"
+
+#: templates/metabox-menu-week.php:69
+msgid "LOC time:"
+msgstr "Hora LOCAL:"
+
+#: templates/metabox-menu-week.php:69
+msgid "( Use local time to select the time interval. )"
+msgstr "( Usa la hora local para establecer el intervalo de tiempo. )"
+
+#: templates/metabox-menu-week.php:77
+msgid "SELECT MENU:"
+msgstr "SELECCIONAR MENU"
+
+#: templates/metabox-menu-week.php:81
+msgid "Add schedule"
+msgstr "Añadir horario"
